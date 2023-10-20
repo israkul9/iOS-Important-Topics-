@@ -33,8 +33,15 @@ class OperationQueue_Demo {
         
         
         let operationQueue = OperationQueue()
+        
         operationQueue.qualityOfService = .utility
-     //   operationQueue.maxConcurrentOperationCount
+       // operationQueue.maxConcurrentOperationCount = 1
+        
+        // if u want to add dependency on a specific operation , here
+        // blockOperation will finish first , then another operation will execute
+        
+        anotherOperation.addDependency(blockOperation)
+        
         operationQueue.addOperations([blockOperation , anotherOperation], waitUntilFinished: false)
     }
 }
@@ -42,3 +49,5 @@ class OperationQueue_Demo {
 let obj = OperationQueue_Demo()
 
 obj.doWork()
+
+
