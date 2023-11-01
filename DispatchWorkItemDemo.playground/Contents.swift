@@ -9,25 +9,27 @@ class Example {
         
         var number  = 15
         
+        // Dispatch Work Item
         var workItem : DispatchWorkItem?
         
         workItem = DispatchWorkItem {
             
-            for i in 0...15 {
+            for i in 0...number {
                 print("number is \(i)")
             
                 guard let workItem = workItem else { return }
                 
-                if workItem.isCancelled {
-                    print("Work item is cancelled")
-                    break
-                }
-            
-                Thread.sleep(forTimeInterval: 2.0)
+
+                Thread.sleep(forTimeInterval: 1.0)
                 
                 // cancel work item after i == 5 
                 if i == 5 {
                     workItem.cancel()
+                }
+                
+                
+                
+                if workItem.isCancelled {
                     break
                 }
             }
@@ -40,8 +42,16 @@ class Example {
         
         // dispatch queue declare
         let queue = DispatchQueue.global(qos: .utility)
+        
+      
         // add work item to queue
         queue.async(execute: workItem!)
+        
+        
+        
+        
+        
+        
         
         // cancel work item after 5 sec
 //        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
