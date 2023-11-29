@@ -1,65 +1,76 @@
+
+// https://www.youtube.com/watch?v=ZtU9OUJSMjA&list=PLb5R4QC2DtFtCm6ArHb9po_wcDgZjb2Ac&index=5
+
+// optional protocol
+
+
+
+
+
 import UIKit
 
 var greeting = "Hello, playground"
 
-protocol Color {
-    func carColour()
-}
-
-extension Color {
-    func CarHoodColor() {
-        debugPrint("Car Hood color is blue")
-    }
-}
-
-protocol SpeedControl {
-    func increaseSpeed()
-    func decreseSpeed()
-}
-
-protocol Horn {
-    func makeSound()
-}
-
 protocol Engine {
-    func startEngine()
-    func stopEngine()
+    func applyBreak()
+    func start()
+    func stop()
 }
 
-protocol Car : Engine , SpeedControl , Horn , Color {
-    
+protocol Car : Engine {
+  
+    func hornSound()
 }
 
-class HondaCivic : Car {
-    
-    func carColour() {
-        <#code#>
+
+
+
+class Rogue : Car {
+    func applyBreak() {
+        print("applyBreak - Rogue")
     }
     
-    
-    func startEngine() {
-        <#code#>
+    func start() {
+        print("start - Rogue")
     }
     
-    func stopEngine() {
-        <#code#>
+    func stop() {
+        print("stop - Rogue")
     }
     
-    func increaseSpeed() {
-        <#code#>
+    func hornSound() {
+        print("hornSound - Rogue")
     }
-    
-    func decreseSpeed() {
-        <#code#>
-    }
-    
-    func makeSound() {
-        <#code#>
-    }
-    
-    
 }
 
-let car = HondaCivic()
+class Audi : Car {
+    func applyBreak() {
+        print("applyBreak - Audi")
+    }
+    
+    func start() {
+        print("start - Audi")
+    }
+    
+    func stop() {
+        print("stop - Audi")
+    }
+    
+    func hornSound() {
+        print("hornSound - Audi")
+    }
+}
 
-car.CarHoodColor()
+class Person {
+    func driveCar(car:Car){
+        car.start()
+        print("i am driving audi")
+    }
+}
+
+
+let objAudi = Audi()
+
+let person = Person()
+
+person.driveCar(car: objAudi)

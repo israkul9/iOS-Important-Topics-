@@ -4,6 +4,8 @@ import Foundation
 
 var greeting = "Hello, playground"
 
+// Useful link on iOS Multi threading - https://medium.com/geekculture/threads-in-ios-gcd-nsoperation-part-1-64e460c0bdea
+
 
 // Race Condition
 
